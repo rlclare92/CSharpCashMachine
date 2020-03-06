@@ -7,7 +7,6 @@ namespace cSharpCashMachine
         string userPin = "1234";
         string accountNumber = "123456789";
         string userInput;
-        string bankBalance = "100";
 
         void checkPin()
         {
@@ -39,23 +38,27 @@ namespace cSharpCashMachine
             }
 
          }
-        void mainOptions(string userInput)
+        void mainOptions(string OptionUserInput)
         {
             Console.WriteLine("Please select an option");
-            Console.ReadLine();
-            if (userInput == "1") 
+            OptionUserInput = Console.ReadLine();
+            // Console.WriteLine(OptionUserInput);
+        
+            if (OptionUserInput == "1") 
             {
                 checkBalance();
             }
-            else if (userInput == "2")
+            else if (OptionUserInput == "2")
             {
-                withdrawl(userInput, bankBalance);
+                Console.WriteLine("How much would you like to withdraw?");
+                withdrawl();
              }
-            else if (userInput == "3")
+            else if (OptionUserInput == "3")
             {
-                deposit(userInput, bankBalance);
+                Console.WriteLine("How much would you like to deposit?");
+                deposit();
             }
-            else if (userInput == "4")
+            else if (OptionUserInput == "4")
             {
                 cancel();
             }
@@ -63,34 +66,58 @@ namespace cSharpCashMachine
 
     void checkBalance()
     {
-        Console.ReadLine();
+        // Console.ReadLine();
         string CurrentBankBalance = "100";
-        Console.WriteLine("Your Bank Balance is {0}", CurrentBankBalance);
+        Console.WriteLine("Your Bank Balance is £{0}", CurrentBankBalance);
     } 
 
-    void withdrawl(string bankBalances, string userInputs)
+    void withdrawl()
         {
+            userInput = Console.ReadLine();
+            string bankBalances = "100";
+            string OptionUserInput = Console.ReadLine();
 
-            Console.ReadLine();
-            int parsedNumberUserInput = int.Parse(userInputs);
+            int parsedNumberUserInput = int.Parse(userInput);
             int parsedNumberBankBalances = int.Parse(bankBalances);
 
-            Console.WriteLine(parsedNumberBankBalances -= parsedNumberUserInput);
-            Console.WriteLine("Your New  Balance is {0}", bankBalances);
+            int NewBankBalance = (parsedNumberUserInput -= parsedNumberBankBalances);
+            Console.WriteLine("Your New YBalance is £{0}", NewBankBalance);
+
+            Console.WriteLine("Would you like to return to main options? Y/N");
+            OptionUserInput = Console.ReadLine();
+            if(OptionUserInput == "Y")
+            {
+               mainOptions(OptionUserInput);
+
+            } else if (OptionUserInput == "N") {
+                cancel();
+            }
 
         }
     
-    void deposit(string userInput, string bankBalance)
-    {
+    void deposit()
+   {
+            userInput = Console.ReadLine();
+            string bankBalances = "100";
+            string OptionUserInput = Console.ReadLine();
 
-            Console.ReadLine();
             int parsedNumberUserInput = int.Parse(userInput);
-            int parsedNumberBankBalances = int.Parse(bankBalance);
-            Console.WriteLine(parsedNumberBankBalances += parsedNumberUserInput);
-            userInput += bankBalance;
-            Console.WriteLine("Your New balance is {0}", bankBalance);
-     }          
+            int parsedNumberBankBalances = int.Parse(bankBalances);
 
+            int NewBankBalance = (parsedNumberUserInput += parsedNumberBankBalances);
+            Console.WriteLine("Your New  Balance is £{0}", NewBankBalance);
+
+            Console.WriteLine("Would you like to return to main options? Y/N");
+            OptionUserInput = Console.ReadLine();
+            if(OptionUserInput == "Y")
+            {
+               mainOptions(OptionUserInput);
+
+            } else if (OptionUserInput == "N") {
+                cancel();
+            }
+        }
+        
     void cancel()
     {
        Console.WriteLine("Please remove your card");
