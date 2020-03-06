@@ -80,8 +80,8 @@ namespace cSharpCashMachine
             int parsedNumberUserInput = int.Parse(userInput);
             int parsedNumberBankBalances = int.Parse(bankBalances);
 
-            int NewBankBalance = (parsedNumberUserInput -= parsedNumberBankBalances);
-            Console.WriteLine("Your New YBalance is £{0}", NewBankBalance);
+            int NewBankBalance = (parsedNumberBankBalances -= parsedNumberUserInput);
+            Console.WriteLine("Your New Balance is £{0}", NewBankBalance);
 
             Console.WriteLine("Would you like to return to main options? Y/N");
             OptionUserInput = Console.ReadLine();
@@ -117,7 +117,6 @@ namespace cSharpCashMachine
                 cancel();
             }
         }
-        
     void cancel()
     {
        Console.WriteLine("Please remove your card");
