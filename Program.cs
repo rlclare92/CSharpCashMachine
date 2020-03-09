@@ -10,7 +10,7 @@ namespace cSharpCashMachine
 
         void checkPin()
         {
-            // Checking user pin number is correct
+            // Checking user pin number is correct 
             Console.WriteLine("Please enter your pin: ");
             userInput = Console.ReadLine();
             Console.WriteLine(userInput);
@@ -22,8 +22,10 @@ namespace cSharpCashMachine
                 Console.WriteLine("Please try again");
              }
         }
+
          void checkAccountNumber()
          {
+             // Checking user account number is correct 
             //  START:
              Console.WriteLine("Please enter your account number");
              userInput = Console.ReadLine();
@@ -40,6 +42,7 @@ namespace cSharpCashMachine
          }
         void mainOptions(string OptionUserInput)
         {
+            // Main Options Section- what options are avaible for the user to access.
             Console.WriteLine("Please select an option");
             OptionUserInput = Console.ReadLine();
             // Console.WriteLine(OptionUserInput);
@@ -51,7 +54,7 @@ namespace cSharpCashMachine
             else if (OptionUserInput == "2")
             {
                 Console.WriteLine("How much would you like to withdraw?");
-                withdrawl();
+                withdrawal();
              }
             else if (OptionUserInput == "3")
             {
@@ -66,13 +69,26 @@ namespace cSharpCashMachine
 
     void checkBalance()
     {
+        // Checking user bank balance
         // Console.ReadLine();
         string CurrentBankBalance = "100";
+        string OptionUserInput = Console.ReadLine();
         Console.WriteLine("Your Bank Balance is £{0}", CurrentBankBalance);
+
+        Console.WriteLine("Would you like to return to main options? Y/N");
+            OptionUserInput = Console.ReadLine();
+            if(OptionUserInput == "Y")
+            {
+               mainOptions(OptionUserInput);
+
+            } else if (OptionUserInput == "N") {
+                cancel();
+            }
     } 
 
-    void withdrawl()
+    void withdrawal()
         {
+            // Withdrawal- Requiring withdrawal from users account 
             userInput = Console.ReadLine();
             string bankBalances = "100";
             string OptionUserInput = Console.ReadLine();
@@ -96,7 +112,8 @@ namespace cSharpCashMachine
         }
     
     void deposit()
-   {
+   {    
+            // Despositing- Despositing amount into the user account
             userInput = Console.ReadLine();
             string bankBalances = "100";
             string OptionUserInput = Console.ReadLine();
@@ -119,6 +136,7 @@ namespace cSharpCashMachine
         }
     void cancel()
     {
+        // Cancel- ends program
        Console.WriteLine("Please remove your card");
     }
 
